@@ -44,6 +44,11 @@ INSTALLED_APPS = [
     'rango',
 ]
 
+PASSWORD_HASHERS = (
+'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+)
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -129,3 +134,8 @@ STATIC_URL = '/static/'
 #media stuff?
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+
+#login stuff
+LOGIN_URL = 'rango:login'
+
+
