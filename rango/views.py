@@ -33,11 +33,7 @@ def index(request):
     context_dict['pages']=top_pages
     context_dict['visits'] = int(request.COOKIES.get('visits', '0'))
 
-    response = render(request, 'rango/index.html', context=context_dict)
-    visitor_cookie_handler(request, response)
-
-    # Render the response and send it back!
-    return response
+    return render(request, 'rango/index.html', context=context_dict)
 
 def about(request):
     #cookie p183 chapter 10
