@@ -7,8 +7,9 @@ from rango.models import Page
 
 def index(request):
 
-    top_categories = Category.objects.order_by('-likes')[:5]
+    category_list = Category.objects.order_by('-likes')[:5]
     top_pages = Page.objects.order_by('-views')[:5]
+
     # Query the database for a list of ALL categories currently stored.
     # Order the categories by the number of likes in descending order.
     # Retrieve the top 5 only -- or all if less than 5.
@@ -18,9 +19,8 @@ def index(request):
     context_dict = {}
     context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
     context_dict['categories'] = category_list
-    context_dict['top_pages']=top_pages
-    context_dict['top_categories']=top_categories
-    
+    context_dict['pages']=top_pages
+
     # Render the response and send it back!
     return render(request, 'rango/index.html', context=context_dict)
 
